@@ -1,5 +1,5 @@
 /*
- * *** YOUR NAME GOES HERE / YOUR SECTION NUMBER ***
+ * *** Larry Gao / COMP 400C 002 SP25 ***
  *
  * This HashingProblems object contains three methods / problems that you must
  * complete utilize the HashMap object within the Java's Collection Framework Library.
@@ -41,8 +41,20 @@ class HashingProblems {
          * returning 0.0/0.0 IS correct (which would return a non-number).
          */
 
-         return 0.0 / 0.0;
-  }
+        double sum = 0; 
+        int count = 0;
+
+        // iterate through array and check if key exists in HashMap
+        for (int num : array) {
+            if (map.containsKey(num)) {
+                sum += map.get(num); // add corresponding value from HashMap
+                count++; // increment count of matched keys
+            }
+        }
+        
+        // return NaN if no values found in common
+        return count == 0 ? Double.NaN : sum / count;
+  } // end method getAverage()
 
 
     /*
@@ -62,9 +74,15 @@ class HashingProblems {
        * Hint: Consider iterating over the HashMap using the keySet method.
        */
 
+      // iterate through keys in HashMap
+      for (int key : map.keySet()) {
+          if (key % 2 != 0) { // check if key is odd
+              result.add(map.get(key)); // add value to result list
+          } 
+      }
 
       return result;
-  }
+  } // end method odd()
 
 
   /*
@@ -110,7 +128,22 @@ class HashingProblems {
        * ADD YOUR CODE HERE
        */
 
-      return -1;
-  }
+      HashSet<Integer> set = new HashSet<>();
+      int count = 0;
+
+      // populate HashSet with array elements
+      for (int num : numbers) {
+          set.add(num);
+      }
+
+      // iterate through array and check for pairs
+      for (int num : numbers) {
+          if (set.contains(num - k)) { // check if complement exists
+              count++;
+          }
+      }
+
+      return count;
+  } // end method twoSums()
 
 } /* end class HashingProblems */
