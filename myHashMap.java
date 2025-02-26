@@ -436,7 +436,7 @@ class myHashMap<K,V> {
         while (head != null) {
             if (head.key.equals(key)) {
                 V oldValue = head.value; // store old value
-                head.value = value; // replcae with new value
+                head.value = val; // replcae with new value
                 return oldValue; // return old value
             }
             head = head.next; // move to next node
